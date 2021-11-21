@@ -1,0 +1,13 @@
+tensorflow==1.15
+sklearn
+scipy==1.1.0
+keras == 2.3
+scikit-learn
+opencv-python
+h5py
+matplotlib
+Pillow
+requests
+psutil
+imutils
+argparse

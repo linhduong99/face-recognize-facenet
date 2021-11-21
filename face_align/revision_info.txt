@@ -1,0 +1,7 @@
+arguments: trainning.py
+--------------------
+tensorflow version: 1.15.0
+--------------------
+git hash: b'HEAD'
+--------------------
+b''
