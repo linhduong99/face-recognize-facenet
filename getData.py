@@ -6,7 +6,7 @@ import time
 import imutils
 import cv2
 
-num_trainning = 100
+num_trainning = 150
 
 def main(id, name, age, gender):
     sampleNum = 0

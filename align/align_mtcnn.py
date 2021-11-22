@@ -10,6 +10,7 @@ import argparse
 import tensorflow as tf
 import numpy as np
 import random
+import imageio
 from time import sleep
 
 sys.path.append('../')
@@ -78,7 +79,7 @@ def align_mtcnn(input_dir,
                 print(image_path)
                 if not os.path.exists(output_filename):
                     try:
-                        img = misc.imread(image_path)
+                        img = imageio.imread(image_path)
                     except (IOError, ValueError, IndexError) as e:
                         errorMessage = '{}: {}'.format(image_path, e)
                         print(errorMessage)

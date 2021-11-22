@@ -112,6 +112,6 @@ def split_dataset(dataset, min_nrof_images_per_class, nrof_train_images_per_clas
 
 
 if __name__ == '__main__':
-    align_mtcnn('your_face', 'face_align')
-    train('face_align/', 'models/20180402-114759.pb', 'models/your_model1.pkl')
+    align_mtcnn('face_data', 'face_align')
+    train('face_align/', 'models/20180402-114759.pb', 'models/your_model.pkl')
 

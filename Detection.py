@@ -42,7 +42,8 @@ def add_overlays(frame, faces, frame_rate, colors, confidence=0.85):
 
                     cv2.putText(frame, class_name, (face_bb[0], face_bb[3] + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
                                     colors[idx], thickness=2, lineType=2)
-                    cv2.putText(frame, d_gender + ' , ' + d_age, (face_bb[0] + 10, face_bb[3] - 10),
+
+                    cv2.putText(frame, str(d_gender) + ' , ' + str(d_age), (face_bb[0] + 10, face_bb[3] - 10),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, colors[idx], thickness=2, lineType=2)
                     #print(class_name + ' ' + d_gender + ' ' + d_age + '  ' + str(datetime_object))
                 else:
@@ -104,13 +105,7 @@ def run(model_checkpoint, classifier, video_file=None, output_file=None):
         video_capture = cv2.VideoCapture(video_file)
     else:
         video_capture = cv2.VideoCapture(0)
-    ret, frame = video_capture.read()
-    #frame = imutils.resize(frame, width = 600)
-    width = frame.shape[1]
-    height = frame.shape[0]
-    if output_file is not None:
-        video_format = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter(output_file, video_format, 20, (width, height))
+
     face_recognition = Recognition(model_checkpoint, classifier)
     start_time = time.time()
     colors = np.random.uniform(0, 255, size=(1, 3))
@@ -132,17 +127,12 @@ def run(model_checkpoint, classifier, video_file=None, output_file=None):
         frame_count += 1
 
         cv2.imshow("Frame", frame)
-        if output_file is not None:
-            out.write(frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-
-    if output_file is not None:
-        out.release()
     video_capture.release()
     cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
-    run('models', 'models/your_model.pkl', video_file= "demo.mp4", output_file="demo.avi")
+    run('models', 'models/your_model.pkl', video_file=None, output_file=None)
