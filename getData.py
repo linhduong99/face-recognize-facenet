@@ -43,7 +43,8 @@ def main(id, name, age, gender):
 
 def fId():
     print('Enter person profile ID: ')
-    Id = input()
+    id = input()
+    return id
 
 
 def fname():
